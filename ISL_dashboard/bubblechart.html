@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawBubbleChart1);
+
+    function drawBubbleChart1() {
+
+    //   var data = google.visualization.arrayToDataTable([
+    //     ['club', 'Goal For', 'Goal Against', 'points', {role:'style'}],
+    //     ["Mumbai City FC", 198, 194, 214, "#092265"],
+    //     ["Bengaluru FC", 156, 115, 168, "#EC2227"],
+    //     ["ATK Mohun Bagan FC", 209, 170, 239, "#7B4E00"],
+    //     ["Odisha FC", 198, 238, 164, "#DDDDDD"],
+    //     ["Kerala Blasters FC", 178, 204, 176, "FFF56D"],
+    //     ["Jamshedpur FC", 131, 119, 142, "#2AAAE2"],
+    //     ["Hydrabad FC", 95, 84, 81, "#733C3C"],
+    //     ["Chennaiyin FC", 200, 214, 189, "#95D1CC"],
+    //     ["Northeast United FC", 153, 200, 158, "#6BCB77"],
+    //     ["FC Goa", 267, 205, 228, "#FD7200"],
+    //     ["SC East Bengal", 40, 69, 28, "#0093AB"],
+    //     ["FC Pune City", 97, 110, 100, "#4D4C7D"]
+    //   ]);
+
+        // var data = google.visualization.arrayToDataTable([
+        //     ['ID', 'Goal For', 'Goal Against', 'club', 'points', {role:'style'}],
+        //     ['MUM', 198, 194, "Mumbai City FC", 214, "#092265"],
+        //     ['BEN', 156, 115, "Bengaluru FC", 168,  "#EC2227"],
+        //     ['ATK', 209, 170, "ATK Mohun Bagan FC", 239, "#7B4E00"],
+        //     ['ODISHA', 198, 238, "Odisha FC", 164, "#DDDDDD"],
+        //     ['KER', 178, 204, "Kerala Blasters FC", 176, "FFF56D"],
+        //     ['JAM', 131, 119, "Jamshedpur FC", 142, "#2AAAE2"],
+        //     ['HYD', 95, 84, "Hydrabad FC", 81, "#733C3C"],
+        //     ['CHE', 200, 214, "Chennaiyin FC", 189, "#95D1CC"],
+        //     ['NEU', 153, 200, "Northeast United FC", 158, "#6BCB77"],
+        //     ['GOA', 267, 205, "FC Goa", 228, "#FD7200"],
+        //     ['SCEB', 40, 69, "SC East Bengal", 28, "#0093AB"],
+        //     ['PUNE', 97, 110, "FC Pune City", 100, "#4D4C7D"]
+        // ]);
+
+        var data = google.visualization.arrayToDataTable([
+            ['ID', 'Goal For', 'Goal Against', 'Club', 'Goal Difference', {role:'style'}],
+            ['MUM', 198, 194, "Mumbai City FC", 4, "#092265"],
+            ['BEN', 156, 115, "Bengaluru FC", 41,  "#EC2227"],
+            ['ATK', 209, 170, "ATK Mohun Bagan FC", 39, "#7B4E00"],
+            ['ODI', 198, 238, "Odisha FC", -40, "#DDDDDD"],
+            ['KER', 178, 204, "Kerala Blasters FC", -26, "FFF56D"],
+            ['JAM', 131, 119, "Jamshedpur FC", 12, "#2AAAE2"],
+            ['HYD', 95, 84, "Hydrabad FC", 11, "#733C3C"],
+            ['CHE', 200, 214, "Chennaiyin FC", -14, "#95D1CC"],
+            ['NEU', 153, 200, "Northeast United FC", -47, "#6BCB77"],
+            ['GOA', 267, 205, "FC Goa", 62, "#FD7200"],
+            ['SCEB', 40, 69, "SC East Bengal", -29, "#0093AB"],
+            ['PUNE', 97, 110, "FC Pune City", 13, "#4D4C7D"]
+        ]);
+
+      var options = {
+        title: 'Goal for vs Goal against by clubs of ISL' +
+          ' Bubble size = goal difference, Bubble color = clubs',
+        hAxis: {title: 'Goal For'},
+        vAxis: {title: 'Goal Against'},
+        width: 1000,
+        height: 700,
+        bubble: {textStyle: {fontSize: 11}}
+      };
+
+      var chart = new google.visualization.BubbleChart(document.getElementById('series_chart_div'));
+      chart.draw(data, options);
+    }
+    </script>
+  </head>
+  <body>
+    <div id="series_chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

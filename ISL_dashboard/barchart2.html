@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawSecondBarChart);
+
+      function drawSecondBarChart() {
+        var data = google.visualization.arrayToDataTable([
+            ["club", "Home Matches Won", "Away Matches Won"],
+            ["Mumbai City FC", 35, 26],
+            ["Bengaluru FC", 28, 22],
+            ["ATK Mohun Bagan FC", 38, 28],
+            ["Odisha FC", 24, 18],
+            ["Kerala Blasters FC", 26, 16],
+            ["Jamshedpur FC", 21, 16],
+            ["Hydrabad FC", 12, 9],
+            ["Chennaiyin FC", 25, 26],
+            ["Northeast United FC", 24, 14],
+            ["FC Goa", 34, 28],
+            ["SC East Bengal", 1, 3],    
+            ["FC Pune City", 16, 11]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Matches won at home and away by clubs in ISL',
+          },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          width: 600
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+  </head>
+  <body>
+    <div id="barchart_material" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

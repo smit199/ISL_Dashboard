@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ["club", "Total_playoffs_played", { role: "style" }],
+            ["Mumbai City FC", 3, "#092265"],
+            ["Bengaluru FC", 3, "#EC2227"],
+            ["ATK Mohun Bagan FC", 6, "#7B4E00"],
+            ["Odisha FC", 2, "#DDDDDD"],
+            ["Kerala Blasters FC", 3, "FFF56D"],
+            ["Jamshedpur FC", 1, "#2AAAE2"],
+            ["Hydrabad FC", 1, "#733C3C"],
+            ["Chennaiyin FC", 4, "#95D1CC"],
+            ["Northeast United FC", 2, "#6BCB77"],
+            ["FC Goa", 6, "#FD7200"],
+            ["FC Pune City", 1, "#4D4C7D"]
+          ]);
+  
+          var options = {
+            title: 'ISL playoffs distribution',
+            pieHole: 0.4,
+          };
+  
+          var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+          chart.draw(data, options);
+        }
+      </script>
+</head>
+<body>
+    <div id="donutchart" style="width: 600px; height: 300px;"></div>
+</body>
+</html>

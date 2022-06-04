@@ -1,0 +1,49 @@
+<html>
+    <head>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+  
+        function drawChart() {
+        //   var data = google.visualization.arrayToDataTable([
+        //     ['Season', 'Mumbai City FC', 'Bengaluru FC', 'ATK Mohun Bagan FC', 'Chennaiyin FC', 'Hydrabad FC'],
+        //     ['2014', 12, null, 16, 24, null],
+        //     ['2015', 16, null, 26, 25, null],
+        //     ['2016', 16, null, 16, 20, null],
+        //     ['2017-18', 25, 35, 16, 24, null],
+        //     ['2018-19', 25, 29, 18, 16, null],
+        //     ['2019-20', 25, 22, 33, 32, 21],
+        //     ['2020-21', 35, 26, 28, 17, 27],
+        //     ['2021-22',  36, 32, 37, 17, 43]
+        //   ]);
+
+        var data = google.visualization.arrayToDataTable([
+            ['Season', 'Mumbai City FC', 'ATK Mohun Bagan FC', 'Chennaiyin FC'],
+            ['2014', 12, 16, 24, ],
+            ['2015', 16, 26, 25],
+            ['2016', 16, 16, 20],
+            ['2017-18', 25, 16, 24],
+            ['2018-19', 25, 18, 16],
+            ['2019-20', 25, 33, 32],
+            ['2020-21', 35, 28, 17],
+            ['2021-22', 36, 37, 17]
+          ]);
+  
+          var options = {
+            title: "Top 3 club's goals in each season",
+            curveType: 'function',
+            legend: { position: 'bottom' }
+          };
+  
+          var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+  
+          chart.draw(data, options);
+        }
+      </script>
+    </head>
+    <body>
+      <div id="curve_chart" style="width: 900px; height: 500px"></div>
+    </body>
+  </html>
+  

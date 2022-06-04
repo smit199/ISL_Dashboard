@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawFirstBarChart);
+        function drawFirstBarChart() {
+          var data = google.visualization.arrayToDataTable([
+            ["club", "market-value", { role: "style" }, { role: "tooltip" }],
+            ["Mumbai City FC", 5.18, "#092265", "Mumbai City FC\n5.18m €"],
+            ["Bengaluru FC", 5.13, "#EC2227", "Bengaluru FC\n5.13m €"],
+            ["ATK Mohun Bagan FC", 4.98, "#7B4E00", "ATK Mohun Bagan FC\n4.98m €"],
+            ["Odisha FC", 4.88, "#DDDDDD", "Odisha FC\n4.88m €"],
+            ["Kerala Blasters FC", 4.48, "FFF56D", "Kerala Blasters FC\n4.48m €"],
+            ["Jamshedpur FC", 4.08, "#2AAAE2", "Jamshedpur FC\n4.08m €"],
+            ["Hydrabad FC", 3.70, "#733C3C", "Hydrabad FC\n3.70m €"],
+            ["Chennaiyin FC", 3.50, "#95D1CC", "Chennaiyin FC\n3.50m €"],
+            ["Northeast United FC", 3.43, "#6BCB77", "Northeast United FC\n3.43m €"],
+            ["FC Goa", 3.43, "#FD7200", "FC Goa\n3.43m €"],
+            ["SC East Bengal", 3.10, "#0093AB", "SC East Bengal\n3.10m €"]
+          ]);
+    
+          var view = new google.visualization.DataView(data);
+          view.setColumns([0, 1,
+                           2]);
+    
+          var options = {
+            title: "Market Value of ISL Clubs, in million euro(€)",
+            width: 800,
+            height: 500,
+            bar: {groupWidth: "60%"},
+            legend: { position: "none" },
+            bar: {textStyle: {fontSize: 7}}
+          };
+          var chart = new google.visualization.BarChart(document.getElementById("barchart"));
+          chart.draw(data, options);
+      }
+    </script>
+</head>
+<body>
+    <div id="barchart" style="width: 600px; height: 300px;"></div>
+</body>
+</html>

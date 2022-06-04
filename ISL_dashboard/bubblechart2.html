@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawBubbleChart2);
+
+    function drawBubbleChart2() {
+        var data = google.visualization.arrayToDataTable([
+            ['ID', 'Yellow cards', 'Second Yellow + Red cards', 'Club', 'Fair Play Points', {role:'style'}],
+            ['MUM', 278, 13, "Mumbai City FC", 325, "#092265"],
+            ['BEN', 178, 7, "Bengaluru FC", 205,  "#EC2227"],
+            ['ATK', 248, 10, "ATK Mohun Bagan FC", 286, "#7B4E00"],
+            ['ODI', 243, 11, "Odisha FC", 280, "#DDDDDD"],
+            ['KER', 244, 11, "Kerala Blasters FC", 285, "#F9F9F9"],
+            ['JAM', 148, 11, "Jamshedpur FC", 191, "#2AAAE2"],
+            ['HYD', 104, 5, "Hydrabad FC", 127, "#733C3C"],
+            ['CHE', 254, 9, "Chennaiyin FC", 289, "#95D1CC"],
+            ['NEU', 263, 11, "Northeast United FC", 310, "#6BCB77"],
+            ['GOA', 234, 17, "FC Goa", 301, "#FD7200"],
+            ['SCEB', 65, 5, "SC East Bengal", 84, "#0093AB"],
+            ['PUNE', 145, 8, "FC Pune City", 173, "#4D4C7D"]
+        ]);
+
+      var options = {
+        title: 'no. of Yellow card vs second yellow + red card by clubs of ISL' +
+          ' Bubble size = fair play points, Bubble color = clubs',
+        hAxis: {title: 'Yellow Card'},
+        vAxis: {title: 'Red Card'},
+        width: 1000,
+        height: 700,
+        bubble: {textStyle: {fontSize: 11}}
+      };
+
+      var chart = new google.visualization.BubbleChart(document.getElementById('series_chart_div'));
+      chart.draw(data, options);
+    }
+    </script>
+  </head>
+  <body>
+    <div id="series_chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

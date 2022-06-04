@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+
+  <!-- bootstrap css  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <!-- icon cdn  -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+
+  <!-- custom css  -->
+  <link rel="stylesheet" href="css/style.css">
+
+
+
+  <!-- google chart loader -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!-- First bar chart -->
+  <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawFirstBarChart);
+    function drawFirstBarChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["club", "market-value", { role: "style" }, { role: "tooltip" }],
+        ["Mumbai City FC", 5.18, "#092265", "Mumbai City FC\n5.18m €"],
+        ["Bengaluru FC", 5.13, "#EC2227", "Bengaluru FC\n5.13m €"],
+        ["ATK Mohun Bagan FC", 4.98, "#7B4E00", "ATK Mohun Bagan FC\n4.98m €"],
+        ["Odisha FC", 4.88, "#DDDDDD", "Odisha FC\n4.88m €"],
+        ["Kerala Blasters FC", 4.48, "FFF56D", "Kerala Blasters FC\n4.48m €"],
+        ["Jamshedpur FC", 4.08, "#2AAAE2", "Jamshedpur FC\n4.08m €"],
+        ["Hydrabad FC", 3.70, "#733C3C", "Hydrabad FC\n3.70m €"],
+        ["Chennaiyin FC", 3.50, "#95D1CC", "Chennaiyin FC\n3.50m €"],
+        ["Northeast United FC", 3.43, "#6BCB77", "Northeast United FC\n3.43m €"],
+        ["FC Goa", 3.43, "#FD7200", "FC Goa\n3.43m €"],
+        ["SC East Bengal", 3.10, "#0093AB", "SC East Bengal\n3.10m €"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       2]);
+
+      var options = {
+        title: "Market Value of ISL Clubs, in million euro(€)",
+        width: 800,
+        height: 400,
+        bar: {groupWidth: "60%"},
+        legend: { position: "none" },
+        backgroundColor: '#F9F9F9'
+      };
+      var chart = new google.visualization.BarChart(document.getElementById("bar1"));
+      chart.draw(data, options);
+  }
+</script>
+<!-- Second bar chart -->
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawSecondBarChart);
+
+    function drawSecondBarChart() {
+      var data = google.visualization.arrayToDataTable([
+          ["club", "Home Matches Won", "Away Matches Won"],
+          ["Mumbai City FC", 35, 26],
+          ["Bengaluru FC", 28, 22],
+          ["ATK Mohun Bagan FC", 38, 28],
+          ["Odisha FC", 24, 18],
+          ["Kerala Blasters FC", 26, 16],
+          ["Jamshedpur FC", 21, 16],
+          ["Hydrabad FC", 12, 9],
+          ["Chennaiyin FC", 25, 26],
+          ["Northeast United FC", 24, 14],
+          ["FC Goa", 34, 28],
+          ["SC East Bengal", 1, 3],    
+          ["FC Pune City", 16, 11]
+      ]);
+
+      var options = {
+        chart: {
+          title: 'Matches won at home and away by clubs in ISL',
+        },
+        bars: 'horizontal', // Required for Material Bar Charts.
+        width: 880,
+        backgroundColor: '#F9F9F9'
+      };
+
+      var chart = new google.charts.Bar(document.getElementById('bar2'));
+
+      chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+  </script>
+
+<!-- pie chart -->
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawPieChart);
+
+    function drawPieChart() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['Club', 'season_win', {role: 'style'}, {role: 'tooltip'}],
+        ['Mumbai City FC', 1, "#092265", 'Mumbai City FC\n1: 2020-21'],
+        ['Bengaluru FC', 1, "#EC2227", 'Bengaluru FC\n1: 2018-19'],
+        ['ATK Mohun Bagan FC', 3, "#7B4E00", 'ATK Mohun Bagan FC\n3: 2014-15, 2016-17, 2019-20'],
+        ['Chennaiyin FC', 2, "#95D1CC", 'Chennaiyin FC\n2: 2015-16, 2017-18'],
+        ['Hydrabad FC', 1, "#733C3C", 'Hydrabad FC\n1: 2021-22']
+      ]);
+
+      var options = {
+        title: 'ISL season win distribution',
+        width: 320,
+        height: 450,
+        legend: {position: 'top'},
+        backgroundColor: '#F9F9F9'
+        //slices: { 3: {offset: 0.1}}
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('pie'));
+
+      chart.draw(data, options);
+    }
+  </script>
+
+  <!-- donut chart -->
+  <script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawDonutChart);
+    function drawDonutChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["club", "Total_playoffs_played", { role: "style" }],
+        ["Mumbai City FC", 3, "#092265"],
+        ["Bengaluru FC", 3, "#EC2227"],
+        ["ATK Mohun Bagan FC", 6, "#7B4E00"],
+        ["Odisha FC", 2, "#DDDDDD"],
+        ["Kerala Blasters FC", 3, "FFF56D"],
+        ["Jamshedpur FC", 1, "#2AAAE2"],
+        ["Hydrabad FC", 1, "#733C3C"],
+        ["Chennaiyin FC", 4, "#95D1CC"],
+        ["Northeast United FC", 2, "#6BCB77"],
+        ["FC Goa", 6, "#FD7200"],
+        ["FC Pune City", 1, "#4D4C7D"]
+      ]);
+
+      var options = {
+        title: 'ISL playoffs distribution',
+        pieHole: 0.3,
+        width: 320,
+        height: 430,
+        legend: {position: 'top'},
+        backgroundColor: '#F9F9F9'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('donut'));
+      chart.draw(data, options);
+    }
+  </script>
+
+  <!-- First Bubble chart -->
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawBubbleChart1);
+
+    function drawBubbleChart1() {
+
+      var data = google.visualization.arrayToDataTable([
+          ['ID', 'Goal For', 'Goal Against', 'Club', 'Goal Difference', {role:'style'}],
+          ['MUM', 198, 194, "Mumbai City FC", 4, "#092265"],
+          ['BEN', 156, 115, "Bengaluru FC", 41,  "#EC2227"],
+          ['ATK', 209, 170, "ATK Mohun Bagan FC", 39, "#7B4E00"],
+          ['ODI', 198, 238, "Odisha FC", -40, "#DDDDDD"],
+          ['KER', 178, 204, "Kerala Blasters FC", -26, "FFF56D"],
+          ['JAM', 131, 119, "Jamshedpur FC", 12, "#2AAAE2"],
+          ['HYD', 95, 84, "Hydrabad FC", 11, "#733C3C"],
+          ['CHE', 200, 214, "Chennaiyin FC", -14, "#95D1CC"],
+          ['NEU', 153, 200, "Northeast United FC", -47, "#6BCB77"],
+          ['GOA', 267, 205, "FC Goa", 62, "#FD7200"],
+          ['SCEB', 40, 69, "SC East Bengal", -29, "#0093AB"],
+          ['PUNE', 97, 110, "FC Pune City", 13, "#4D4C7D"]
+      ]);
+
+    var options = {
+      title: 'Goal for vs Goal against by clubs of ISL' +
+        ' Bubble size = goal difference, Bubble color = clubs',
+      hAxis: {title: 'Goal For'},
+      vAxis: {title: 'Goal Against'},
+      width: 620,
+      height: 400,
+      bubble: {textStyle: {fontSize: 11}},
+      backgroundColor: '#F9F9F9'
+    };
+
+    var chart = new google.visualization.BubbleChart(document.getElementById('bubble1'));
+    chart.draw(data, options);
+  }
+  </script>
+
+  <!-- Second bubble chart -->
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawBubbleChart2);
+
+  function drawBubbleChart2() {
+      var data = google.visualization.arrayToDataTable([
+          ['ID', 'Yellow cards', 'Second Yellow + Red cards', 'Club', 'Fair Play Points', {role:'style'}],
+          ['MUM', 278, 13, "Mumbai City FC", 325, "#092265"],
+          ['BEN', 178, 7, "Bengaluru FC", 205,  "#EC2227"],
+          ['ATK', 248, 10, "ATK Mohun Bagan FC", 286, "#7B4E00"],
+          ['ODI', 243, 11, "Odisha FC", 280, "#DDDDDD"],
+          ['KER', 244, 11, "Kerala Blasters FC", 285, "#F9F9F9"],
+          ['JAM', 148, 11, "Jamshedpur FC", 191, "#2AAAE2"],
+          ['HYD', 104, 5, "Hydrabad FC", 127, "#733C3C"],
+          ['CHE', 254, 9, "Chennaiyin FC", 289, "#95D1CC"],
+          ['NEU', 263, 11, "Northeast United FC", 310, "#6BCB77"],
+          ['GOA', 234, 17, "FC Goa", 301, "#FD7200"],
+          ['SCEB', 65, 5, "SC East Bengal", 84, "#0093AB"],
+          ['PUNE', 145, 8, "FC Pune City", 173, "#4D4C7D"]
+      ]);
+
+    var options = {
+      title: 'no. of Yellow card vs second yellow + red card by clubs of ISL' +
+        ' Bubble size = fair play points, Bubble color = clubs',
+      hAxis: {title: 'Yellow Card'},
+      vAxis: {title: 'Red Card'},
+      width: 620,
+      height: 400,
+      bubble: {textStyle: {fontSize: 11}},
+      backgroundColor: '#F9F9F9'
+    };
+
+    var chart = new google.visualization.BubbleChart(document.getElementById('bubble2'));
+    chart.draw(data, options);
+  }
+  </script>
+
+<!-- line chart -->
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+    //   var data = google.visualization.arrayToDataTable([
+    //     ['Season', 'Mumbai City FC', 'Bengaluru FC', 'ATK Mohun Bagan FC', 'Chennaiyin FC', 'Hydrabad FC'],
+    //     ['2014', 12, null, 16, 24, null],
+    //     ['2015', 16, null, 26, 25, null],
+    //     ['2016', 16, null, 16, 20, null],
+    //     ['2017-18', 25, 35, 16, 24, null],
+    //     ['2018-19', 25, 29, 18, 16, null],
+    //     ['2019-20', 25, 22, 33, 32, 21],
+    //     ['2020-21', 35, 26, 28, 17, 27],
+    //     ['2021-22',  36, 32, 37, 17, 43]
+    //   ]);
+
+    var data = google.visualization.arrayToDataTable([
+        ['Season', 'Mumbai City FC', 'ATK Mohun Bagan FC', 'Chennaiyin FC'],
+        ['2014', 12, 16, 24, ],
+        ['2015', 16, 26, 25],
+        ['2016', 16, 16, 20],
+        ['2017-18', 25, 16, 24],
+        ['2018-19', 25, 18, 16],
+        ['2019-20', 25, 33, 32],
+        ['2020-21', 35, 28, 17],
+        ['2021-22', 36, 37, 17]
+      ]);
+
+      var options = {
+        title: "Top 3 club's goals in each season",
+        curveType: 'function',
+        legend: { position: 'bottom' },
+        backgroundColor: '#F9F9F9'
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('line'));
+
+      chart.draw(data, options);
+    }
+  </script>
+
+  <!-- Geo chart -->
+  <script type="text/javascript">
+    google.charts.load('current', {
+      'packages':['geochart'],
+    });
+    google.charts.setOnLoadCallback(drawRegionsMap);
+
+    function drawRegionsMap() {
+      // var data = google.visualization.arrayToDataTable([
+      //   ['Country', 'Players', 'Matches', 'Goals', 'Assist'],
+      //   ['India', 466, 10755, 502, 521],
+      //   ['Spain', 92, 1911, 298, 211],
+      //   ['Brazil', 59, 1250, 207, 139],
+      //   ['Nigeria', 10, 233, 101, 12],
+      //   ['Australia', 17, 347, 48, 35],
+      //   ['Urugue', 9, 196, 43, 30],
+      //   ['England', 26, 371, 42, 19],
+      //   ['Senegal', 11, 180, 35, 11],
+      //   ['Fiji', 1, 52, 33, 13],
+      //   ['Canada', 1, 61, 25, 6],
+      //   ['Portugal', 18, 212, 23, 18],
+      //   ['Argentina', 12, 118, 23, 13],
+      //   ['Netherlands', 11, 170, 20, 6],
+      //   ['Colombia', 9, 87, 17, 4],
+      //   ['Jamaica', 4, 55, 15, 2],
+      //   ['France', 12, 170, 14, 5], 
+      //   ['Scotland', 5, 67, 13, 12],
+      //   ['Ireland', 7, 95, 11, 5],
+      //   ['South Africa', 3, 46, 9, 14],
+      //   ['Italy', 12, 91, 5, 7],
+      //   ['Germany', 2, 31, 5, 3]
+      // ]);
+
+      var data = google.visualization.arrayToDataTable([
+        ['Country', 'Players', 'Goals'],
+        ['India', 466, 502],
+        ['Spain', 92, 298],
+        ['Brazil', 59, 207],
+        ['Nigeria', 10, 101],
+        ['Australia', 17, 48],
+        ['Urugue', 9, 43],
+        ['England', 26, 42],
+        ['Senegal', 11, 35],
+        ['Fiji', 1, 33],
+        ['Canada', 1, 25],
+        ['Portugal', 18, 23],
+        ['Argentina', 12, 23],
+        ['Netherlands', 11, 20],
+        ['Colombia', 9, 17],
+        ['Jamaica', 4, 15],
+        ['France', 12, 14], 
+        ['Scotland', 5, 13],
+        ['Ireland', 7, 11],
+        ['South Africa', 3, 9],
+        ['Italy', 12, 5],
+        ['Germany', 2, 5],
+        ['Morocco', 4, 128],
+        ['Ghana', 7, 19],
+        ['Venezuela', 2, 18],
+        ['Cameroon', 5, 13],
+        ['Solvenia', 3, 9],
+        ['Greece', 4, 6],
+        ['Finland', 3, 4],
+        ['Turkey', 1, 3],
+        ['Denmark', 2, 3]
+      ]);
+
+      var options = {
+          title: "Goal distribution by countries",
+          backgroundColor: '#F9F9F9'
+      };
+
+      var chart = new google.visualization.GeoChart(document.getElementById('geo'));
+
+      chart.draw(data, options);
+    }
+  </script>
+</head>
+<body>
+
+
+    <div class="container">
+
+        <h1 class="row d-flex justify-content-center" id="ch1_head">Indian Super League Analysis Dashboard</h1>
+
+
+        <div class="row d-flex justify-content-around">
+
+          
+          <!--first area chart -->
+            <div id="bar1" class="charts col-3" style="width: 660px; height: 400px;"></div>
+
+            <!-- pie chart -->
+            <div id="pie" class="charts col-3" style="width: 300px; height: 400px;" ></div>
+
+            <!-- donut chart -->
+            <div id="donut" class="charts col-3" style=" width: 300px; height: 400px;" ></div>
+
+            <!--second bar chart -->
+            <div id="bar2" class="charts col-4" style="width: 900px; height: 530px;" ></div>
+
+            <div id="" class="info col-4" style="width: 400px; height: 530px;" >
+              <h5 style="text-align: center;">All Time Top 10 Goalscores</h3>
+                <br>
+                <table>
+                  <tr>
+                    <td>1.</td>
+                    <td><img src="img/1.webp" style="width:30px; height:40px;" alt=""></td>
+                    <td>Bartholomew Ogbeche</td>
+                    <td></td>
+                    <td></td>
+                    <td>51</td>
+                  </tr>
+                  
+                  <tr>
+                    <td>2.</td>
+                    <td><img src="img/2.webp" style="width:30px; height:40px;" alt=""></td>
+                    <td>Ferrán Corominas</td>
+                    <td></td>
+                    <td></td>
+                    <td>47</td>
+                  </tr>
+
+                  <tr>
+                    <td>3.</td>
+                    <td><img src="img/3.webp" style="width:30px; height:40px;" alt=""></td>
+                    <td>Sunil Chhetri</td>
+                    <td>46</td>
+                  </tr>
+
+                  <tr>
+                    <td>4.</td>
+                    <td><img src="img/4.webp" style="width:30px; height:40px;" alt=""></td>
+                    <td>Marcelinho</td>
+                    <td>33</td>
+                  </tr>
+
+                  <tr>
+                    <td>5.</td>
+                    <td><img src="img/5.webp" style="width:30px; height:40px;" alt=""></td>
+                    <td>Roy Krishnas</td>
+                    <td>33</td>
+                  </tr>
+
+                  <tr>
+                    <td>6.</td>
+                    <td><img src="img/6.webp" style="width:30px; height:40px;" alt=""></td>
+                    <td>Iain Hume</td>
+                    <td>25</td>
+                  </tr>
+
+                  <tr>
+                    <td>7.</td>
+                    <td><img src="img/7.webp" style="width:30px; height:40px;" alt=""></td>
+                    <td>Nerijus Valskis</td>
+                    <td>25</td>
+                  </tr>
+
+                  <tr>
+                    <td>8.</td>
+                    <td><img src="img/8.webp" style="width:30px; height:40px;" alt=""></td>
+                    <td>Hugo Boumous</td>
+                    <td>23</td>
+                  </tr>
+
+                  <tr>
+                    <td>9.</td>
+                    <td><img src="img/9.webp" style="width:30px; height:40px;" alt=""></td>
+                    <td>Igor Angulo</td>
+                    <td>23</td>
+                  </tr>
+
+                  <tr>
+                    <td>10.</td>
+                    <td><img src="img/10.webp" style="width:30px; height:40px;" alt=""></td>
+                    <td>Jeje Lalpekhlua</td>
+                    <td>20</td>
+                  </tr>
+                </table>
+                
+            </div>
+
+            <!-- first bubble chart -->
+            <div id="bubble1" class="charts col-5" style="width: 650px; height: 360px;"  ></div>
+
+            <!--second bubble chart -->
+           <div id="bubble2" class="charts col-5" style="width:650px; height: 360px;"  ></div>
+
+           <!-- line chart  -->
+           <div id="line" class="charts col-5" style="width: 650px; height: 360px;"  ></div>
+
+           <!-- geo chart -->
+           <div id="geo" class="charts col-5" style="width:650px; height: 360px;"  ></div>
+        </div>
+    </div>
+    <br><br><br>
+
+    <!-- custom js  -->
+    <script src="js/script.js"></script>
+
+
+    <!-- bootstrap js  -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+</html>

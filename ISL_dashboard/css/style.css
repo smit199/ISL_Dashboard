@@ -1,0 +1,122 @@
+.charts{
+    border: 1px solid black;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.1s;
+    margin-top: 30px;
+    background-color: #F9F9F9;
+}
+
+.info {
+    border: 1px solid black;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.1s;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+td {
+    font-size: 16pt;
+}
+.charts:hover{
+    box-shadow: 6px 6px 13px gray, -6px -6px 10px rgb(237, 237, 237) ;
+}
+
+#ch1_head{
+    margin-top: 30px;
+    /* color: rgb(30, 127, 132); */
+    /* background-color: rgb(229, 243, 238); */
+    padding: 20px;
+    
+    position: relative;
+    top: -200px;
+    transition: all 1s;
+}
+
+#ch2_head{
+    margin-top: 40px;
+    background-color: bisque;
+    padding: 20px;
+
+    position: relative;
+    left : 2000px;
+
+    transition: all 1s;
+
+}
+#icn{
+    display: inline-block;
+    /* border: 1px solid red; */
+    transform: rotate(90deg);
+    transition: all 0.3s;
+}
+
+
+
+#ch1{
+    position: relative;
+    transition: all 2s;
+    left: 2000px;
+}
+
+#ch2{
+    position: relative;
+    transition: all 2s;
+    top: -1000px;
+
+}
+
+#ch3{
+    position: relative;
+    transition: all 2s;
+    right: 2000px;
+}
+
+#ch4{
+    position: relative;
+    transition: all 2s;
+    top: 1000px;
+}
+
+#ch5{
+    position: relative;
+    transition: all 2s;
+    left: -1000px
+}
+#ch6{
+    position: relative;
+    transition: all 2s;
+    left:-2000px;
+}
+
+#ch7{
+    position: relative;
+    transition: all 0.8s;
+    left: -1000px;
+
+}
+
+#ch8{
+    position: relative;
+    transition: all 1.2s;
+    left: 1000px;
+
+}
+
+#ch9{
+    position: relative;
+    transition: all 1.6s;
+    left: -1000px;
+
+}
+
+#ch10{
+    position: relative;
+    transition: all 2s;
+    left: 1000px;
+}
+
+body{
+    overflow-x: hidden;
+}
