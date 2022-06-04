@@ -1,4 +1,4 @@
 # Indian Super League Dashboard
-Bar Charts
+# Bar Charts
 
 Pie Chart
